@@ -8,7 +8,7 @@ public:
     typedef std::unique_ptr<SceneNode> Ptr;
 
 public:
-    SceneNode();
+    SceneNode();  
 
 private:
     std::vector<Ptr> mChildren;
