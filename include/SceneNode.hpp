@@ -10,6 +10,10 @@ public:
 public:
     SceneNode();  
 
+public:
+    void attachChild(Ptr child);
+    auto detachChild(const SceneNode& node) -> Ptr;
+
 private:
     std::vector<Ptr> mChildren;
     SceneNode *mParent;
