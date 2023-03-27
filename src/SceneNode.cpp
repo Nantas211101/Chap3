@@ -19,5 +19,23 @@ auto SceneNode::detachChild(const SceneNode &node) -> Ptr
     auto result = std::move(*found);
     result->mParent = nullptr;
     mChildren.erase(found); // erase iterator
-    return result; // return unique_ptr
+    return result;          // return unique_ptr
+}
+
+void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
+{
+    states.transform *= getTransform(); // *= is a operator to combines the parent's absolute transform (states) with the current node's relative one (target). result will be the current node
+    drawCurrent(target, states);
+
+    // Way 1 of iteration
+    for (const Ptr &child : mChildren)
+    {
+        child->draw(target, states);
+    }
+
+    // Way 2 of iteration
+    // for (auto itr = mChildren.begin(); itr != mChildren.end(); ++itr)
+    // {
+    //     (*itr)->draw(target, states);
+    // }
 }

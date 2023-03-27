@@ -1,7 +1,8 @@
 #pragma once
 #include "Entity.hpp"
+#include <SFML/Graphics.hpp>
 
-class Aircraft : public Entity
+class Aircraft : public Entity // inherits indirectyly SceneNode
 {
 public:
     enum Type
@@ -11,8 +12,10 @@ public:
     };
 
 public:
-    explicit Aircraft(Type type);
+    explicit        Aircraft(Type type);
+    virtual void    drawCurrent(sf::RenderTarget& target, sf::RenderStates states) const;
 
 private:
-    Type mType;
+    Type        mType;
+    sf::Sprite  mSprite;
 };
