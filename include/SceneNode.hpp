@@ -3,6 +3,12 @@
 #include <memory>
 #include <assert.h>
 
+enum Layer
+{
+    Background,
+    Air,
+    LayerCount
+};
 class SceneNode : public sf::Transformable, public sf::Drawable, private sf::NonCopyable
 {
 public:
@@ -18,6 +24,14 @@ public:
 private:
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const;
     virtual void drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const;
+
+    // Updating
+public:
+    void update(sf::Time dt);
+
+private:
+    virtual void updateCurrent(sf::Time dt);
+    void updateChildren(sf::Time dt);
 
 private:
     std::vector<Ptr> mChildren;

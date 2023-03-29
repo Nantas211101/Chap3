@@ -39,3 +39,19 @@ void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
     //     (*itr)->draw(target, states);
     // }
 }
+
+void SceneNode::update(sf::Time dt)
+{
+    updateCurrent(dt);
+    updateChildren(dt);
+}
+
+void SceneNode::updateCurrent(sf::Time dt)
+{
+}
+
+void SceneNode::updateChildren(sf::Time dt)
+{
+    for (const Ptr &child : mChildren)
+        child->update(dt);
+}
