@@ -4,6 +4,18 @@
 #include <SFML/Graphics.hpp>
 #include <map>
 #include <memory>
+
+namespace Textures
+{
+    enum ID
+    {
+        Eagle,
+        Raptor,
+    };
+}
+
+typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder;
+
 template <typename Resource, typename Identifier>
 class ResourceHolder {
    public:
