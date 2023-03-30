@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "ResourceHolder.hpp"
-
+#include "SceneNode.hpp"
 namespace Textures
 {
     enum ID
@@ -13,7 +13,7 @@ namespace Textures
 
 typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder; 
 
-class Entity
+class Entity : public SceneNode
 {
 public:
     void setVelocity(sf::Vector2f velocity);

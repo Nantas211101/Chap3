@@ -33,6 +33,11 @@ private:
     virtual void updateCurrent(sf::Time dt);
     void updateChildren(sf::Time dt);
 
+    // Transform
+public:
+    auto getWorldTransform() -> sf::Transform const;
+    auto getWorldPosition() -> sf::Vector2f const;
+
 private:
     std::vector<Ptr> mChildren;
     SceneNode *mParent;

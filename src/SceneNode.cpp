@@ -40,6 +40,10 @@ void SceneNode::draw(sf::RenderTarget &target, sf::RenderStates states) const
     // }
 }
 
+void SceneNode::drawCurrent(sf::RenderTarget &target, sf::RenderStates states) const
+{
+}
+
 void SceneNode::update(sf::Time dt)
 {
     updateCurrent(dt);
@@ -54,4 +58,17 @@ void SceneNode::updateChildren(sf::Time dt)
 {
     for (const Ptr &child : mChildren)
         child->update(dt);
+}
+
+auto SceneNode::getWorldTransform() -> sf::Transform const
+{
+    sf::Transform transform = sf::Transform::Identity;
+    for (const SceneNode *node = this; node != nullptr; node = node->mParent)
+        transform = node->getTransform() * transform; // reverse the operator of combining in the SceneNode::draw
+    return transform;
+}
+
+auto SceneNode::getWorldPosition() -> sf::Vector2f const
+{
+    return getWorldTransform() * sf::Vector2f();
 }
