@@ -32,7 +32,12 @@ void World::buildScene(){
         mSceneGraph.attachChild(std::move(layer)); // attach the layer into the graph
     }
 
-    // Get the Textures::Desert take the bounded and set it to repeated
+    setBackground();    
+    setAirplanes();
+}
+
+void World::setBackground(){
+    // Get the Textures::Desert, take the bounded and set it to repeated
     sf::Texture& texture = mTextures.get(Textures::Desert);
     sf::IntRect textureRect(mWorldBounds);
     texture.setRepeated(true);
@@ -46,4 +51,49 @@ void World::buildScene(){
                                     // because the backgroundsprite did not set the origin so its origin is the top left
     mSceneLayers[Background]
         ->attachChild(std::move(backgroundSprite)); // attach the child for the background
+}
+
+void World::setAirplanes(){
+    setLeader();
+    setEscort(true);
+    setEscort(false);   
+}
+
+void World::setLeader(){
+    std::unique_ptr<Aircraft> leader(
+        new Aircraft(Aircraft::Eagle, mTextures));
+    mPlayerAircraft = leader.get();
+    mPlayerAircraft->setPosition(mSpawnPosition);
+    mPlayerAircraft->setVelocity(40.f, mScrollSpeed);
+    mSceneLayers[Air]->attachChild(std::move(leader));
+}
+
+void World::setEscort(bool isleft){
+    int tmp = (isleft)? -1 : 1;
+    std::unique_ptr<Aircraft> Escort(
+        new Aircraft(Aircraft::Raptor, mTextures));
+    Escort->setPosition(tmp * 80, 50);
+    mPlayerAircraft->attachChild(std::move(Escort));
+}
+
+// updating and draw
+
+void World::draw(){
+    mWindow.setView(mWorldView);
+    mWindow.draw(mSceneGraph);
+}
+
+void World::update(sf::Time dt){
+    mWorldView.move(0.f, mScrollSpeed * dt.asSeconds());
+
+    sf::Vector2f position = mPlayerAircraft->getPosition();
+    sf::Vector2f velocity = mPlayerAircraft->getVelocity();
+
+    if(position.x <= mWorldBounds.left + 150
+    || position.x >= mWorldBounds.left + mWorldBounds.width - 150){
+        velocity.x = -velocity.x;
+        mPlayerAircraft->setVelocity(velocity);
+    }
+
+    mSceneGraph.update(dt);
 }

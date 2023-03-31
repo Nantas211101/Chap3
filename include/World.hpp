@@ -21,6 +21,14 @@ private:
     void buildScene();
 
 private:
+    void setBackground();
+    void setAirplanes();
+
+private:
+    void setLeader();
+    void setEscort(bool isleft);
+
+private:
     enum Layer
     {
         Background,
