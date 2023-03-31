@@ -1,8 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "../include/ResourceHolder.hpp"
-#include "../include/SceneNode.hpp"
-#include "../include/Aircraft.hpp"
+#include "ResourceHolder.hpp"
+#include "SceneNode.hpp"
+#include "Aircraft.hpp"
+#include "SpriteNode.hpp"
 #include <array>
 const char* Eagle = "";
 const char* Raptor = "";
@@ -24,7 +25,7 @@ private:
     {
         Background,
         Air,
-        LayerCound
+        LayerCount
     };
 
 private:

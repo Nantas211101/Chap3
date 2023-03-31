@@ -3,12 +3,12 @@
 #include <memory>
 #include <assert.h>
 
-enum Layer
-{
-    Background,
-    Air,
-    LayerCount
-};
+// enum Layer
+// {
+//     Background,
+//     Air,
+//     LayerCount
+// };
 class SceneNode : public sf::Transformable, public sf::Drawable, private sf::NonCopyable
 {
 public:
