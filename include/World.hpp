@@ -4,6 +4,9 @@
 #include "../include/SceneNode.hpp"
 #include "../include/Aircraft.hpp"
 #include <array>
+const char* Eagle = "";
+const char* Raptor = "";
+const char* Desert = "";
 
 class World : private sf::NonCopyable
 {
