@@ -1,10 +1,14 @@
 #include <iostream>
-#include "../include/SceneNode.hpp"
+#include "../include/Game.h"
 
 int main()
 {
-    // sf::RenderWindow window(...);
-    // SceneNode::Ptr node(...);
-    // window.draw(*node); // note: no node->draw(window) here!
+    try{
+        Game game;
+        game.run();
+    }
+    catch (std::exception& e){
+        std::cout << "\n EXCEPTION: " << e.what() << std::endl;
+    }
     return 0;
 }

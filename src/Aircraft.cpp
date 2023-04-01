@@ -10,6 +10,7 @@ auto toTextureID(Aircraft::Type type) -> Textures::ID
     case Aircraft::Raptor:
         return Textures::Raptor;
     }
+    return Textures::Eagle;
 }
 
 Aircraft::Aircraft(Type type, const TextureHolder &textures) : mType(type), mSprite(textures.get(toTextureID(type)))

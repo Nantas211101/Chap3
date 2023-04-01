@@ -5,9 +5,9 @@
 #include "Aircraft.hpp"
 #include "SpriteNode.hpp"
 #include <array>
-const char* Eagle = "";
-const char* Raptor = "";
-const char* Desert = "";
+const std::string Path_Eagle = "./resource/eagle.png";
+const std::string Path_Raptor = "./resource/Raptor.jpg";
+const std::string Path_Desert = "./resource/Desert.jpg";
 
 class World : private sf::NonCopyable
 {

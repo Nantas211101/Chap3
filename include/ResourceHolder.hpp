@@ -15,7 +15,6 @@ namespace Textures
     };
 }
 
-typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder;
 
 template <typename Resource, typename Identifier>
 class ResourceHolder {
@@ -31,5 +30,7 @@ class ResourceHolder {
    private:
     std::map<Identifier, std::unique_ptr<Resource>> mResourceMap;
 };
+
+typedef ResourceHolder<sf::Texture, Textures::ID> TextureHolder;
 
 #include "../Template/ResourceHolder.inl"
