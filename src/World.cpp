@@ -11,7 +11,8 @@ World::World(sf::RenderWindow &window) :
     mSpawnPosition(
         mWorldView.getSize().x / 2.f,                           // X position
         mWorldBounds.height - mWorldView.getSize().y / 2.f),  // Y position
-    mPlayerAircraft(nullptr){
+    mPlayerAircraft(nullptr),
+    mScrollSpeed(0.f){
     
     loadTextures();
     buildScene();

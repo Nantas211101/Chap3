@@ -39,12 +39,13 @@ private:
 private:
     sf::RenderWindow &mWindow;
     sf::View mWorldView;
+    sf::FloatRect mWorldBounds;
+    sf::Vector2f mSpawnPosition;
+    Aircraft *mPlayerAircraft;
+    float mScrollSpeed;
+    
     TextureHolder mTextures;
     SceneNode mSceneGraph;
     std::array<SceneNode *, LayerCount> mSceneLayers;
 
-    sf::FloatRect mWorldBounds;
-    sf::Vector2f mSpawnPosition;
-    float mScrollSpeed;
-    Aircraft *mPlayerAircraft;
 };
